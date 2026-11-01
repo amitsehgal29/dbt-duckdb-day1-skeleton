@@ -1,0 +1,25 @@
+name: shop_analytics
+version: "1.0.0"
+config-version: 2
+profile: shop_analytics
+
+model-paths: ["models"]
+seed-paths: ["seeds"]
+target-path: "target"
+clean-targets: ["target", "dbt_packages"]
+
+seeds:
+  shop_analytics:
+    raw_orders:
+      +column_types:
+        order_id: varchar
+        customer_id: varchar
+        order_ts: varchar
+        status: varchar
+        amount_aed: varchar
+        payment_method: varchar
+
+models:
+  shop_analytics:
+    staging:
+      +materialized: view
